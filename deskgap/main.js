@@ -17,15 +17,16 @@ const win = new BrowserWindow({
 	title: pkg.name,
 });
 
-app.once('ready', () => {
-	const hostname = 'localhost';
-	serve(0, hostname, function() {
-		win.loadURL(`http://${hostname}:${this.address().port}/index.html`);
-		win.setTitle(pkg.name);
-	});
+const hostname = 'localhost';
+let server;
+Promise.all([
+	new Promise(resolve => app.once('ready', resolve)),
+	new Promise(resolve => server = createServer(0, hostname, resolve)),
+]).then(() => {
+	win.loadURL(`http://${hostname}:${server.address().port}/index.html`);
 });
 
-function serve(port, hostname, cb) {
+function createServer(port, hostname, cb) {
 	return http.createServer(function (request, response) {
 		const filePath = './' + request.url;
 		const extname = path.extname(filePath);
