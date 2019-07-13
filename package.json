@@ -3,7 +3,7 @@
   "description": "boilerplate for a deskgap app with CRA-based UI",
   "main": "main.js",
   "version": "0.1.0",
-  "private": true,
+  "license": "MIT",
   "dependencies": {
     "deskgap": "^0.1.0",
     "react": "^16.8.6",

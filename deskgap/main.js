@@ -13,11 +13,13 @@ messageNode.on('ping', (event, message) => {
 	event.sender.send('pong', `Pong: ${message}`);
 });
 
+// setup window
 const win = new BrowserWindow({
 	menu: null,
 	title: pkg.name,
 });
 
+// setup server + load index in window when it's ready
 const hostname = 'localhost';
 let server;
 Promise.all([
