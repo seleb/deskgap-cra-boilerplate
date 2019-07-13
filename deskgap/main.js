@@ -8,8 +8,9 @@ const fs = require('fs');
 const path = require('path');
 const pkg = require('./package.json');
 
-messageNode.on('hello-to-node', (e, message) => {
-    e.sender.send('hello-from-node', `Hello, ${message}`);
+// setup message listeners
+messageNode.on('ping', (event, message) => {
+	event.sender.send('pong', `Pong: ${message}`);
 });
 
 const win = new BrowserWindow({
