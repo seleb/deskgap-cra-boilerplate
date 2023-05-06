@@ -1,10 +1,13 @@
-const { app, BrowserWindow, messageNode } = require('deskgap');
+const { app, BrowserWindow, messageNode, shell } = require('deskgap');
 const pkg = require('./package.json');
 const createServer = require('./server');
 
 // setup message listeners
 messageNode.on('ping', (event, message) => {
 	event.sender.send('pong', `Pong: ${message}`);
+});
+messageNode.on('url', (event, message) => {
+	shell.openExternal(message);
 });
 
 // setup window
