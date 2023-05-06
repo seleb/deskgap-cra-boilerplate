@@ -14,3 +14,15 @@ includes a port of most of the deskgap API demo
 - `npm run start` will run the standard CRA webpack dev server
 - `npm run build` will create a production build of the react app, and copy the necessary files for the deskgap app into `/bin`
 - `./deskgap/main.js` is the deskgap startup script; IPC can be setup here
+
+## Windows Limitation
+
+Edge webviews do not allow loading localhost URLs without admin privileges, or by adding a loopback exception:
+
+```sh
+CheckNetIsolation LoopbackExempt -a -n="microsoft.win32webviewhost_cw5n1h2txyewy"
+```
+
+A fallback view is included in the template to help resolve the issue.
+
+[Reference](https://github.com/webview/webview/issues/556#issuecomment-805672457)

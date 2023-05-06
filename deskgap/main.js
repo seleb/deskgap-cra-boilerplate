@@ -1,6 +1,7 @@
 const { app, BrowserWindow, messageNode, shell } = require('deskgap');
 const pkg = require('./package.json');
 const createServer = require('./server');
+const path = require('path');
 
 // setup message listeners
 messageNode.on('ping', (event, message) => {
@@ -21,12 +22,11 @@ const hostname = 'localhost';
 let server;
 new Promise(resolve => (server = createServer(0, hostname, resolve)))
 	.then(() => app.whenReady())
-	.then(() => {
-		win.webContents.executeJavaScript(`console.log('started')`);
-		win.webContents.executeJavaScript(`console.log(navigator.userAgent)`);
-		const url = `http://${hostname}:${server.address().port}`;
-		win.webContents.executeJavaScript(`console.log('${url}')`);
-		return win.loadURL(url);
+	.then(() => win.loadURL(`http://${hostname}:${server.address().port}`))
+	.then(async () => {
+		if (await win.webContents.executeJavaScript(`window.location.href`) === 'about:blank') {
+			return win.loadFile(path.resolve(__dirname, 'fallback.html'));
+		}
 	})
 	.then(() => win.webContents.executeJavaScript(`console.log('loaded')`))
 	.catch(err => {
