@@ -5,7 +5,8 @@ export default function useDeskgap() {
 		const deskgap = window.deskgap;
 		if (!deskgap) {
 			console.warn('DeskGap window API not available! Using mock instead.');
-			return {
+			/** @type {typeof window.deskgap} */
+			const mock = {
 				asyncNode: {
 					require: () => {},
 					getCurrentWindow: () => {},
@@ -16,6 +17,7 @@ export default function useDeskgap() {
 					send: () => {},
 				},
 			};
+			return mock;
 		}
 		return deskgap;
 	}, []);
