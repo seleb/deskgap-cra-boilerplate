@@ -4,7 +4,10 @@ boilerplate for a [deskgap](https://github.com/patr0nus/DeskGap) app with [CRA](
 
 includes a port of most of the deskgap API demo
 
-- ```sh
+- The standard host for deskgap's binary distribution no longer works, so this project includes a copy of the binaries.
+  The `DESKGAP_DIST_FOLDER` env var needs to be set when running `npm install` in order for these to work:
+  
+  ```sh
   export DESKGAP_DIST_FOLDER=`realpath ./deskgap_bin` && npm i
   ```
 
