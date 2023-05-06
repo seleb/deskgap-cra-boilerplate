@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "fs-extra": "^8.1.0",
-    "node-sass": "^4.12.0"
+    "sass": "^1.62.1"
   },
   "homepage": "."
 }
