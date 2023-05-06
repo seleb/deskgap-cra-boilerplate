@@ -24,8 +24,15 @@ Promise.all([
 	new Promise(resolve => app.once('ready', resolve)),
 	new Promise(resolve => server = createServer(0, hostname, resolve)),
 ]).then(() => {
+	win.webContents.executeJavaScript(`console.log('started')`);
+	win.webContents.executeJavaScript(`console.log(navigator.userAgent)`);
 	const url = `http://${hostname}:${server.address().port}`;
-	win.loadURL(url);
+	win.webContents.executeJavaScript(`console.log('${url}')`);
+	return win.loadURL(url);
+}).then(() => {
+	win.webContents.executeJavaScript(`console.log('loaded')`);
 }).catch((err) => {
 	console.error(err);
+	win.webContents.executeJavaScript(`console.log('failed')`);
+	win.webContents.executeJavaScript(`console.log(\`${err.toString()}\`)`);
 });
