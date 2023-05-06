@@ -2,9 +2,8 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-module.exports = function createServer(port, hostname, cb, log) {
+module.exports = function createServer(port, hostname, cb) {
 	return http.createServer(function (request, response) {
-		if (!log) log = () => {};
 		let filePath = path.join(__dirname, request.url);
 		if (fs.statSync(filePath).isDirectory()) {
 			filePath = path.join(filePath, 'index.html');
