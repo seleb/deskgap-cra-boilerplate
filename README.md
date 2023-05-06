@@ -1,6 +1,6 @@
 # deskgap-cra-boilerplate
 
-boilerplate for a deskgap app with CRA-based UI
+boilerplate for a [deskgap](https://github.com/patr0nus/DeskGap) app with [CRA](https://create-react-app.dev)-based UI
 
 includes a port of most of the deskgap API demo
 
