@@ -5,12 +5,12 @@
   "version": "0.1.0",
   "license": "MIT",
   "dependencies": {
-    "deskgap": "^0.1.0",
     "react": "^16.8.6",
     "react-app-polyfill": "^1.0.1",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
     "react-scripts": "3.4.4"
+    "deskgap": "^0.2.0",
   },
   "scripts": {
     "start": "react-scripts start",
