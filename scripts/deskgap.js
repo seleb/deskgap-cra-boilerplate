@@ -11,4 +11,5 @@ fs.moveSync(path.join(outputDir, 'DeskGap.exe'), path.join(outputDir, `${pkg.nam
 fs.emptyDirSync(path.join(outputDir, 'resources/app'));
 fs.copySync('./build', path.join(outputDir, 'resources/app'));
 fs.copySync('./deskgap/main.js', path.join(outputDir, 'resources/app/main.js'));
+fs.copySync('./deskgap/server.js', path.join(outputDir, 'resources/app/server.js'));
 fs.copySync('./package.json', path.join(outputDir, 'resources/app/package.json'));
